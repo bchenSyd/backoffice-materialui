@@ -52,7 +52,6 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children })
 )
 
 const MaterialUiForm = props => {
-  console.log('form rerender...')
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>

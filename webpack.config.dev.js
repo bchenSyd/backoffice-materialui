@@ -6,15 +6,15 @@ module.exports = {
   devtool: 'source-map',
   debug:true,
   entry: [
-    'babel-polyfill',
-    'eventsource-polyfill', // necessary for hot reloading with IE
-    'webpack-hot-middleware/client',
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8000',
+    'webpack/hot/only-dev-server',
     './src/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/static/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
