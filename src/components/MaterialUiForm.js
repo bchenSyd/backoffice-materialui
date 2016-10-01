@@ -57,7 +57,7 @@ const MaterialUiForm = props => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field name="firstName" component={renderTextField} label="First Name11 "/>
+        <Field name="firstName" component={renderTextField} label="First Name"/>
       </div>
       <div>
         <Field name="lastName" component={renderTextField} label="Last Name"/>
