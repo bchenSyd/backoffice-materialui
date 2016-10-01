@@ -6,8 +6,6 @@ import { createStore, combineReducers } from 'redux'
 import { reducer as reduxFormReducer } from 'redux-form'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import MaterialUiForm from './components/MaterialUiForm'
-
 
 injectTapEventPlugin()
 const dest = document.getElementById('content')
@@ -26,7 +24,8 @@ const showResults = values =>
   })
 
 let render = () => {
-  
+  const MaterialUiForm = require('./components/MaterialUiForm').default
+  console.log('hot re-render')
   ReactDOM.render(
     <Provider store={store}>
       <MuiThemeProvider muiTheme={getMuiTheme()}>

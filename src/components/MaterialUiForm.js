@@ -52,11 +52,12 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children })
 )
 
 const MaterialUiForm = props => {
+  console.log('form rerender...')
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field name="firstName" component={renderTextField} label="First Name2"/>
+        <Field name="firstName" component={renderTextField} label="First Name11 "/>
       </div>
       <div>
         <Field name="lastName" component={renderTextField} label="Last Name"/>
