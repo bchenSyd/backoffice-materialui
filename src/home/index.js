@@ -63,7 +63,7 @@ class Main extends Component {
           >
             dialog-content-goes-here
           </Dialog>
-          <h1>Material-UI11</h1>
+          <h1>adslot media</h1>
           <h2>example project12aawww</h2>
           <RaisedButton
             label="Super Secret Password"
