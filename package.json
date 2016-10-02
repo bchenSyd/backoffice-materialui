@@ -3,7 +3,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && webpack --progress --color",
-    "lint": "eslint src  --color",
+    "lint": "eslint src --fix --color",
     "start": "node devServer.js"
   },
   "dependencies": {

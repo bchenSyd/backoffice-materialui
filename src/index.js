@@ -12,7 +12,7 @@ import MaterialUi from './components'
 
 import 'bootstrap/dist/js/bootstrap.min'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './style/site.scss'
+import './style/_index.scss'
 
 
 injectTapEventPlugin()
