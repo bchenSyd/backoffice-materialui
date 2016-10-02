@@ -15,7 +15,7 @@ class App extends Component{
             <div className="contentAndFooter">
                 <div className="content">
                     <div className='content-header'>
-                        <img src='./style/img/logo.png' />
+                        <h3>Adslot media log goes here</h3>
                     </div>
                     <div className='main-content'>
                         <Home />
