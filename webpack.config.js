@@ -16,8 +16,7 @@ module.exports = {
   debug:true,
   entry: { 
     bundle:[
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8000',
+    'webpack/hot/dev-server',
     'webpack/hot/only-dev-server',
     './src/index'],
     vendor: packages
@@ -46,18 +45,11 @@ module.exports = {
       {from: 'index.html'},
     ]),
   ],
-  resolve: {
-    modulesDirectories: [
-      'src',
-      'node_modules'
-    ],
-    extensions: [ '', '.json', '.js' ]
-  },
   module: {
     loaders: [
       {
         test: /\.jsx?/,
-        loaders: [ 'babel', 'eslint' ],
+        loaders: [ 'react-hot','babel', 'eslint' ],
         exclude: path.join(__dirname, 'node_modules'),
       },
       {
