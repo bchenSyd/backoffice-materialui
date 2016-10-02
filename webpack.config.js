@@ -16,7 +16,7 @@ module.exports = {
   debug:true,
   entry: { 
     bundle:[
-    'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://localhost:8000',
     'webpack/hot/only-dev-server',
     './src/index'],
     vendor: packages
@@ -85,7 +85,7 @@ module.exports = {
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
-        loader: 'file?name=[name].[hash].[ext]'
+        loader: 'file?name=[name].[ext]'
       }
       
     ]

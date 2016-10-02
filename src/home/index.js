@@ -63,8 +63,8 @@ class Main extends Component {
           >
             dialog-content-goes-here
           </Dialog>
-          <h1>Material-UI</h1>
-          <h2>example project</h2>
+          <h1>Material-UI11</h1>
+          <h2>example project12aawww</h2>
           <RaisedButton
             label="Super Secret Password"
             secondary
