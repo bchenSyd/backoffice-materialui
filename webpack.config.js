@@ -55,6 +55,21 @@ module.exports = {
         exclude: path.join(__dirname, 'node_modules'),
       },
       {
+        //bootstrap requires this
+        test: /\.((woff2?)(\?v=[0-9]\.[0-9]\.[0-9]))|(woff2?)$/,
+        loader: 'url?limit=10000'
+      },
+      {
+        //bootstrap requires this
+        test: /\.((ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9]))|(ttf|eot)$/,
+        loader: 'file'
+      },
+      {
+        //bootstrap requires this
+        test: /\.svg?$/,
+        loader: "url?limit=10000&minetype=image/svg+xml"
+      },
+      {
         test: /\.json$/,
         loader: 'json-loader'
       },

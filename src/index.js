@@ -10,7 +10,10 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MaterialUi from './components'
 
+import 'bootstrap/dist/js/bootstrap.min'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './style/site.scss'
+
 
 injectTapEventPlugin()
 const dest = document.getElementById('content')
