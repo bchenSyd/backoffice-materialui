@@ -1,48 +1,42 @@
 import React, {Component} from 'react'
-import RaisedButton from 'material-ui/RaisedButton'
-import Dialog from 'material-ui/Dialog'
-import {deepOrange500} from 'material-ui/styles/colors'
-import FlatButton from 'material-ui/FlatButton'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import {TextField,
+        RaisedButton,
+        FlatButton,
+        Dialog} from 'material-ui'
 
-const styles = {
-  container: {
-    textAlign: 'center',
-    paddingTop: 200,
-  },
-}
 
-const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500,
-  },
-})
+import searchApi from '../api/service'
+import SearchResult from './searchResult'
 
-class Main extends Component {
-  constructor(props, context) {
-    super(props, context)
+const muiTheme = getMuiTheme()
 
-    this.handleRequestClose = this.handleRequestClose.bind(this)
-    this.handleTouchTap = this.handleTouchTap.bind(this)
-
-    this.state = {
-      open: false,
+class SearchPage extends Component {
+  constructor(props) {
+    super(props)
+    this.onSearchTextChanged = this.onSearchTextChanged.bind(this)
+    this.state={
+      showResult : false,
+      searchResult :[]
     }
   }
 
-  handleRequestClose() {
-    this.setState({
-      open: false,
-    })
+  componentDidMount() {
+    this.refs.search_input.focus()
   }
 
-  handleTouchTap() {
-    this.setState({
-      open: true,
+
+  onSearchTextChanged(e) {
+    const val = e.target.value
+    searchApi.search(val).then((searchResult) => {
+      this.setState({
+        showResult: true,
+        searchResult
+      })
     })
   }
-
+ 
   render() {
     const standardActions = (
       <FlatButton
@@ -51,29 +45,38 @@ class Main extends Component {
         onTouchTap={this.handleRequestClose}
       />
     )
-
+    const {showResult, searchResult} = this.state
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={styles.container}>
-          <Dialog
-            open={this.state.open}
-            title="Super Secret Password"
-            actions={standardActions}
-            onRequestClose={this.handleRequestClose}
-          >
-            dialog-content-goes-here
-          </Dialog>
-          <h1>adslot media</h1>
-          <h2>example project12aawww</h2>
-          <RaisedButton
-            label="Super Secret Password"
-            secondary
-            onTouchTap={this.handleTouchTap}
-          />
-        </div>
+        <div className="container">
+           <div className='row'>
+             <div className = 'col-xs-8 col-xs-offset-1'>
+                <TextField
+                  ref='search_input'
+                  fullWidth
+                  hintText="Search publishers"
+                  onChange = {this.onSearchTextChanged}
+                  />
+              </div>
+              <div className="pull-left search" />
+           </div>
+            <div className='row margin-top-10'>
+              <div className = 'col-xs-8 col-xs-offset-1'>
+                {
+                  showResult &&
+                  (searchResult.length > 0 ? searchResult.map((val,index)=>
+                          <SearchResult key={'index+' + index} result={val} />)
+                          :<div className='margin-top-10'>
+                              <span>We currently don't have any results for your search, try another</span>
+                          </div>
+                  )
+                }
+              </div>
+            </div>
+       </div>
       </MuiThemeProvider>
     )
   }
 }
 
-export default Main
+export default SearchPage

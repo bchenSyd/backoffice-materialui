@@ -14,8 +14,8 @@ class App extends Component{
         return (
             <div className="contentAndFooter">
                 <div className="content">
-                    <div className='content-header'>
-                        <h3>Adslot media log goes here</h3>
+                    <div className='content-header' >
+                        <div className="logo"/>
                     </div>
                     <div className='main-content'>
                         <Home />
