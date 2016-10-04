@@ -49,19 +49,19 @@ class SearchPage extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="container">
-           <div className='row'>
-             <div className = 'col-xs-8 col-xs-offset-1'>
+           <div className='row margin-top-10'>
+             <div className = 'col-xs-12 col-md-8 col-md-offset-1'>
                 <TextField
                   ref='search_input'
                   fullWidth
-                  hintText="Search publishers"
+                   hintText="Search publishers"
                   onChange = {this.onSearchTextChanged}
                   />
               </div>
               <div className="pull-left search" />
            </div>
             <div className='row margin-top-10'>
-              <div className = 'col-xs-8 col-xs-offset-1'>
+              <div className = 'col-xs-12 col-md-8 col-md-offset-1'>
                 {
                   showResult &&
                   (searchResult.length > 0 ? searchResult.map((val,index)=>
