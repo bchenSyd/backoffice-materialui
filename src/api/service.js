@@ -23,7 +23,7 @@ const searchApi={
                 //first return a collection of sites that contains the keyword
                 let result_col = keyword.split(',').map(
                         keyword=> keyword && searchSite(keyword.trim()))
-                result_col = _.flatten(result_col)
+                result_col = _(result_col).flatten().filter(c=>c).value()
                 //use site.id as key to return a distince collection
                 const search_result = _.unionBy(result_col,result=>result.id)
                 resolve(search_result)
