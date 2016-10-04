@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "4.4.7"
+    "node": "5.5.0"
    }, 
   "private": true,
   "scripts": {
