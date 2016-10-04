@@ -7,23 +7,17 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer')
 const postcssImport = require('postcss-import')
 
-// ***** seperate node_modules into a vendor.js *********************
-const packages = Object.keys(require('./package.json').dependencies)
-//*******************************************************************
-
 module.exports = {
   devtool: 'source-map',
   debug:true,
-  entry: { 
-    bundle:[
+  entry: [
     'webpack-dev-server/client?http://localhost:8000',
     'webpack/hot/only-dev-server',
-    './src/index'],
-    vendor: packages
-  },
+    './src/index'
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: 'bundle.js',
     publicPath: '/'
   },
   plugins: [
