@@ -21,6 +21,7 @@ class SearchPage extends Component {
     this.state={
       showResult : false,
       loading: false,
+      searchQueued : false,
       searchResult :[]
     }
   }
@@ -29,20 +30,32 @@ class SearchPage extends Component {
     this.search_input.focus()
   }
 
-
-  onSearchTextChanged(e) {
-    const val = e.target.value
+  executeSearch(){
+    // to cater for the case where use type too fast
+    // we only want to search once in such case
+    const keyword = this.search_input.getValue()
     this.setState({
-        showResult: true,
-        loading:true
-    })
-    searchApi.search(val).then((searchResult) => {
+              showResult: true,
+              loading:true
+          })
+    console.log('begining search for keyword: ' + keyword)
+    searchApi.search(keyword).then((searchResult) => {
       this.setState({
         showResult: true,
         loading:false,
         searchResult
       })
-    })
+     })
+
+     this.setState({searchQueued:false})
+  }
+
+  onSearchTextChanged() {
+    const {searchQueued} = this.state
+    if(!searchQueued){
+       setTimeout(this.executeSearch.bind(this), 800);
+    }
+    this.setState({searchQueued:true})
   }
  
  setRef(ref){

@@ -1,11 +1,11 @@
 {
   "engines": {
     "node": "5.5.0"
-   }, 
+  },
   "private": true,
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && webpack --progress --color",
+    "build": "npm run clean&& cross-env NODE_ENV=production webpack --progress --color",
     "lint": "eslint src --fix --color",
     "start": "node devServer.js"
   },
@@ -51,5 +51,8 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
+  },
+  "devDependencies": {
+    "cross-env": "^1.0.8"
   }
 }

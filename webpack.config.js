@@ -7,14 +7,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer')
 const postcssImport = require('postcss-import')
 
-module.exports = {
-  devtool: 'source-map',
-  debug:true,
-  entry: [
-    'webpack-dev-server/client?http://localhost:8000',
-    'webpack/hot/only-dev-server',
-    './src/index'
-  ],
+var env = process.env.NODE_ENV
+
+var config = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -32,8 +27,16 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     // Allows error warnings but does not stop compiling.
     new webpack.NoErrorsPlugin(),
-     // extract all css into a separate file
+    // extract all css into a separate file
     new ExtractTextPlugin('style.css'),
+    // replace all modules' if(process.env.NODE_ENV === 'production')
+    // with if (undefined|'production' === 'production')
+    // because the code is running on browser, not node.js
+     new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(env)
+      }
+    }),
     // Moves files
     new CopyWebpackPlugin([
       {from: 'index.html'},
@@ -96,3 +99,32 @@ module.exports = {
     ] 
   },
 };
+
+
+if(env=== 'production'){
+  config.entry = './src/index'
+  config.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        warnings: false
+      }
+    })
+  )
+  config.plugins.push(new webpack.optimize.DedupePlugin())
+  config.plugins.push(new webpack.NoErrorsPlugin())
+
+}else{
+  config = Object.assign(config,{
+        devtool: 'source-map',
+        debug:true, 
+        entry: [
+          'webpack-dev-server/client?http://localhost:8000',
+          'webpack/hot/only-dev-server',
+          './src/index'
+        ]
+  })
+}
+module.exports = config
