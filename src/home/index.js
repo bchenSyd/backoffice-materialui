@@ -8,6 +8,7 @@ import {TextField,
 
 
 import searchApi from '../api/service'
+import SearchBox from '../common/searchBox'
 import SearchResult from './searchResult'
 
 const muiTheme = getMuiTheme()
@@ -16,6 +17,7 @@ class SearchPage extends Component {
   constructor(props) {
     super(props)
     this.onSearchTextChanged = this.onSearchTextChanged.bind(this)
+    this.setRef = this.setRef.bind(this)
     this.state={
       showResult : false,
       searchResult :[]
@@ -23,7 +25,7 @@ class SearchPage extends Component {
   }
 
   componentDidMount() {
-    this.refs.search_input.focus()
+    this.search_input.focus()
   }
 
 
@@ -37,28 +39,19 @@ class SearchPage extends Component {
     })
   }
  
+ setRef(ref){
+   this.search_input = ref
+ }
   render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary
-        onTouchTap={this.handleRequestClose}
-      />
-    )
+   
     const {showResult, searchResult} = this.state
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="container">
            <div className='row margin-top-10'>
              <div className = 'col-xs-12 col-md-8 col-md-offset-1'>
-                <TextField
-                  ref='search_input'
-                  fullWidth
-                   hintText="Search publishers"
-                  onChange = {this.onSearchTextChanged}
-                  />
+                <SearchBox  setRef={this.setRef} onChange={this.onSearchTextChanged}/>
               </div>
-              <div className="pull-left search" />
            </div>
             <div className='row margin-top-10'>
               <div className = 'col-xs-12 col-md-8 col-md-offset-1'>

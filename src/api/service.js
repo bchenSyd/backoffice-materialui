@@ -1,4 +1,4 @@
-var payload  = require('./payload')
+var payload  = require('./payload')  //eslint-disable-line
 import _ from 'lodash'
 
 
