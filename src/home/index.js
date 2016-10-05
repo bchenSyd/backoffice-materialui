@@ -3,8 +3,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {TextField,
         RaisedButton,
-        FlatButton,
-        Dialog} from 'material-ui'
+        CircularProgress
+        } from 'material-ui'
 
 
 import searchApi from '../api/service'
@@ -20,6 +20,7 @@ class SearchPage extends Component {
     this.setRef = this.setRef.bind(this)
     this.state={
       showResult : false,
+      loading: false,
       searchResult :[]
     }
   }
@@ -31,9 +32,14 @@ class SearchPage extends Component {
 
   onSearchTextChanged(e) {
     const val = e.target.value
+    this.setState({
+        showResult: true,
+        loading:true
+    })
     searchApi.search(val).then((searchResult) => {
       this.setState({
         showResult: true,
+        loading:false,
         searchResult
       })
     })
@@ -42,8 +48,27 @@ class SearchPage extends Component {
  setRef(ref){
    this.search_input = ref
  }
+
+ getResult(){
+   const {showResult, loading, searchResult} = this.state
+   if(!showResult){
+     return null
+  }
+  if(loading){
+    return  (<div className='margin-top-40 col-xs-2 col-xs-offset-4'>
+          <CircularProgress />
+      </div>)
+  }
+
+  return (searchResult.length > 0 ?
+      searchResult.map((val,index)=>
+        <SearchResult key={'index+' + index} result={val} />)
+      :<div className='margin-top-10'>
+          <span>We currently don't have any results for your search, try another</span>
+      </div>)
+ }
+
   render() {
-   
     const {showResult, searchResult} = this.state
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -55,15 +80,7 @@ class SearchPage extends Component {
            </div>
             <div className='row margin-top-10'>
               <div className = 'col-xs-12 col-md-8 col-md-offset-1'>
-                {
-                  showResult &&
-                  (searchResult.length > 0 ? searchResult.map((val,index)=>
-                          <SearchResult key={'index+' + index} result={val} />)
-                          :<div className='margin-top-10'>
-                              <span>We currently don't have any results for your search, try another</span>
-                          </div>
-                  )
-                }
+                 { this.getResult() }
               </div>
             </div>
        </div>

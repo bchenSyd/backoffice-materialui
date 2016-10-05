@@ -27,7 +27,7 @@ const searchApi={
                 //use site.id as key to return a distince collection
                 const search_result = _.unionBy(result_col,result=>result.id)
                 resolve(search_result)
-            }, 500)
+            }, 800)
         })
     }
 }
