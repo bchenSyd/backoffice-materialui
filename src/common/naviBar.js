@@ -11,21 +11,21 @@ const naviBar = props=>(
                 <span className="icon-bar" />
                 <span className="icon-bar" />
               </button>
-              <a href='#' >
-                <div  className='logo'/>
-              </a>
+                 <Link to='/'>
+                    <div  className='logo'/>
+                 </Link>
             </div>
 
             
             <div className="collapse navbar-collapse" id="menuBar">
               <ul className="nav navbar-nav">
                 <li>
-                    <Link to='/settlements' activeClassName='active'>Settlements
+                    <Link to='settlements' activeClassName='active'>Settlements
                         <span className="sr-only">(current)</span>
                     </Link>
                 </li>
                 <li>
-                   <Link to='/transactions' activeClassName='active'>Transactions
+                   <Link to='transactions' activeClassName='active'>Transactions
                        <span className="sr-only">(current)</span>
                    </Link>
                 </li>

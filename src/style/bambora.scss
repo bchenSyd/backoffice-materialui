@@ -3,6 +3,10 @@
         margin-top: 18px;
     }
 
+.navbar-default {
+    background-color: $color-header-background;
+}
+
 @media (min-width: 768px) {
    
     .navbar-default .navbar-nav>li>a {
