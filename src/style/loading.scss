@@ -1,5 +1,6 @@
 /*This CSS has been tweaked from root site
       to match with material-ui*/
+
 form > div > div > div {
       padding: 0px;
       border: none;
@@ -21,8 +22,7 @@ form > div > div > div {
     animation: load8 1.1s infinite linear;
 }
 
-.loader,
-.loader:after {
+.loader, .loader:after {
     border-radius: 50%;
     width: 10em;
     height: 10em;

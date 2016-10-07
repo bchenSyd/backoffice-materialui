@@ -1,26 +1,5 @@
 /* use this to override bootstrap default styles*/
- .navbar-toggle{
-        margin-top: 18px;
-    }
-
-.navbar-default {
-    background-color: $color-header-background;
+html {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-
-@media (min-width: 768px) {
-   
-    .navbar-default .navbar-nav>li>a {
-        font-size: 1.5em;
-    }
-
-    .nav>li>a {
-        position: relative;
-        display: block;
-        padding-top:40px;
-    }
-}
-
-.navbar-brand{
-    padding-left: 0;
-}
-

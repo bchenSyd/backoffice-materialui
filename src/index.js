@@ -11,6 +11,8 @@ import configureStore from './store/configureStore'
 import 'bootstrap/dist/js/bootstrap.min'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './style/_index.scss'
+
+
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin()

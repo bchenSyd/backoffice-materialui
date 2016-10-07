@@ -40,6 +40,7 @@ var config = {
     // Moves files
     new CopyWebpackPlugin([
       {from: 'index.html'},
+      {from:'assets/css/font-icons', to:'font-icons'}
     ]),
   ],
   module: {
