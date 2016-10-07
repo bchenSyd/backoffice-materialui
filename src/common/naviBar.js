@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, browserHistory } from 'react-router'
 
 const naviBar = props=>(
-    <nav className="navbar navbar-default  ">
+    <nav className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
               <button type="button" className="pull-left navbar-toggle collapsed" data-toggle="collapse" data-target="#menuBar" aria-expanded="false" >
@@ -12,8 +12,7 @@ const naviBar = props=>(
                 <span className="icon-bar" />
               </button>
               <a href='#' >
-                <div className='logo hidden-xs'/>
-                <span className='navbar-brand visible-xs'>Back Office</span>
+                <div  className='logo'/>
               </a>
             </div>
 

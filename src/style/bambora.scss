@@ -1,8 +1,10 @@
 /* use this to override bootstrap default styles*/
-@media (min-width: 768px) {
-    .navbar-toggle{
+ .navbar-toggle{
         margin-top: 18px;
     }
+
+@media (min-width: 768px) {
+   
     .navbar-default .navbar-nav>li>a {
         font-size: 1.5em;
     }
