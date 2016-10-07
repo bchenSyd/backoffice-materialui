@@ -34,8 +34,7 @@ const appBar = props => {
                     <div  className='placeholder' style={{ flex: '2' }}/>
                     <IconButton   iconClassName="glyphicon glyphicon-user " iconStyle={{ color: 'white' }}/>
                 </div>}
-            showMenuIconButton>
-        </AppBar>
+            showMenuIconButton />
     )
 
 }

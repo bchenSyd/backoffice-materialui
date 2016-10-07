@@ -1,8 +1,11 @@
 import React from 'react'
 
-const settlementDetails = props =>(
-    <div>
-        <h1>settlementDetails</h1>
-    </div>
-)
+const settlementDetails = () => {
+    return (
+        <div>
+            details
+        </div>
+    )
+}
+
 export default settlementDetails

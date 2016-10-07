@@ -38,7 +38,7 @@ class SearchPage extends Component {
               showResult: true,
               loading:true
           })
-    console.log('begining search for keyword: ' + keyword)
+    //console.log('begining search for keyword: ' + keyword)
     searchApi.search(keyword).then((searchResult) => {
       this.setState({
         showResult: true,
@@ -53,7 +53,7 @@ class SearchPage extends Component {
   onSearchTextChanged() {
     const {searchQueued} = this.state
     if(!searchQueued){
-       setTimeout(this.executeSearch.bind(this), 800);
+       setTimeout(this.executeSearch.bind(this), 800)
     }
     this.setState({searchQueued:true})
   }

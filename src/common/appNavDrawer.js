@@ -25,7 +25,7 @@ const appNavDrawer = props => {
         <Drawer docked={false}
             width={250}
             open={props.open}
-            onRequestChange={ onRequestChange}
+            onRequestChange={onRequestChange}
             >
              <SelectableList value=""
                 onChange={onNavigation}

@@ -41,7 +41,9 @@ class App extends Component {
             <div>
                 <AppBar onMenuClicked = {this.onMenuClicked}/>
                 <AppNavDrawer open={navDrawerOpen} onNavDrawerClosing={this.onNavDrawerClosing}/>
+                <div className='container'>
                 {this.props.children}
+                </div>
             </div>
         </MuiThemeProvider>    )
     }
