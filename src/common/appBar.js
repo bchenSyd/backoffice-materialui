@@ -13,25 +13,25 @@ const appBar = props => {
          browserHistory.push(route)
     }
 
-    const menuBarStyle = {
-        flex: '6'
+    const tabStyle = {
+        width: '300px'
     }
     if (width === SMALL) {
-        menuBarStyle.display = 'none'
+        tabStyle.display = 'none'
     }
     return (
         <AppBar title="Back Office"
             titleStyle={{ minWidth: '150px' }}
             onLeftIconButtonTouchTap={onMenuClicked}
             zDepth={0}
-            iconStyleRight={menuBarStyle}
+            iconStyleRight={{flex:'6'}}
             iconElementRight={
-                <div id='navi_menu_wraper' style={{ display: 'flex' }}>
-                    <Tabs style={{ flex: '1' }}>
+                <div id='navi_menu_wraper' style={{display:'flex'}}>
+                    <Tabs style={tabStyle}>
                         <Tab label="Settlements"   data-route="/settlements"  onActive={onTabActivated} />
                         <Tab label="Transactions"  data-route="/transactions" onActive={onTabActivated} />
                     </Tabs>
-                    <div  className='placeholder' style={{ flex: '2' }}/>
+                     <div  className='placeholder' style={{ flex: '2' }}/>
                     <IconButton   iconClassName="glyphicon glyphicon-user " iconStyle={{ color: 'white' }}/>
                 </div>}
             showMenuIconButton />
