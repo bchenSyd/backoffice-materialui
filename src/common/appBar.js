@@ -2,23 +2,29 @@ import React from 'react'
 import { browserHistory} from 'react-router'
 
 import {AppBar, IconButton, Tabs,
-    Tab, Slider} from 'material-ui'
+    Tab, Slider , Menu, MenuItem} from 'material-ui'
 import withWidth, {SMALL,MEDIUM, LARGE} from 'material-ui/utils/withWidth'
 
 const appBar = props => {
     const {width, onMenuClicked} = props
 
-    const onTabActivated = tab => {
-         const route = tab.props['data-route']
-         browserHistory.push(route)
+    const onNavChange = (event, value)=>{
+        browserHistory.push(value)
     }
-
-    const tabStyle = {
-        width: '300px'
+    const style = {
+        menuStyle: {
+            width: '300px'
+        },
+        menuListStyle: {
+            display: 'flex',
+            paddingTop: '0',
+            textTransform: 'uppercase'
+        }
     }
     if (width === SMALL) {
-        tabStyle.display = 'none'
+        style.menuStyle.display = 'none'
     }
+
     return (
         <AppBar title="Back Office"
             titleStyle={{ minWidth: '150px' }}
@@ -27,10 +33,12 @@ const appBar = props => {
             iconStyleRight={{flex:'6'}}
             iconElementRight={
                 <div id='navi_menu_wraper' style={{display:'flex'}}>
-                    <Tabs style={tabStyle}>
-                        <Tab label="Settlements"   data-route="/settlements"  onActive={onTabActivated} />
-                        <Tab label="Transactions"  data-route="/transactions" onActive={onTabActivated} />
-                    </Tabs>
+                    <Menu style={style.menuStyle} listStyle={ style.menuListStyle} onChange={onNavChange}>
+                        <MenuItem style={{color:'white'}}  primaryText='Settlements' value='/settlements' />
+                        <MenuItem style={{color:'white'}}  primaryText='Transactions' value='/transactions' />
+                    </Menu>
+
+
                      <div  className='placeholder' style={{ flex: '2' }}/>
                     <IconButton   iconClassName="glyphicon glyphicon-user " iconStyle={{ color: 'white' }}/>
                 </div>}

@@ -31,11 +31,11 @@ const appNavDrawer = props => {
                 onChange={onNavigation}
                 >
               <Subheader>Bambora Back Office</Subheader>
-              <ListItem primaryText="Home" value="/" />,
-              <ListItem primaryText="Settlements" value="/settlements" />,
-              <ListItem primaryText="Transactions" value="/transactions" />,
-              <ListItem primaryText="Account" value="/account" />,
-              <ListItem primaryText="Support" value="/support" />,
+              <ListItem primaryText="Home" value="/" />
+              <ListItem primaryText="Settlements" value="/settlements" />
+              <ListItem primaryText="Transactions" value="/transactions" />
+              <ListItem primaryText="Account" value="/account" />
+              <ListItem primaryText="Support" value="/support" />
         </SelectableList>
         </Drawer>
     )
