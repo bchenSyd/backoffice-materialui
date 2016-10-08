@@ -47,8 +47,8 @@ var config = {
     loaders: [
       {
         test: /\.jsx?/,
-        loaders: [ 'react-hot','babel', 'eslint' ],
-        exclude: path.join(__dirname, 'node_modules'),
+        loaders: [ 'react-hot','babel'],
+        exclude: /node_modules/,
       },
       {
         //bootstrap requires this
@@ -83,7 +83,8 @@ var config = {
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
-        loader: 'file?name=[name].[ext]'
+        loader: 'file?name=[name].[ext]',
+        include:/img/
       }
       
     ]

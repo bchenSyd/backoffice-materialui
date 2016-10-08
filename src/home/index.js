@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../style/img/logo.png'
 
 const homePage = () => {
   return (
