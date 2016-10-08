@@ -3,13 +3,16 @@ import React, {Component} from 'react'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import AppBar from './common/appBar'
-import AppNavDrawer from './common/appNavDrawer'
 import ClearFix from 'material-ui/internal/ClearFix'
 import spacing from 'material-ui/styles/spacing'
 
 import {grey50, grey800} from 'material-ui/styles/colors'
 import {fade } from 'material-ui/utils/colorManipulator'
+
+
+import AppBar from './common/appBar'
+import AppNavDrawer from './common/appNavDrawer'
+import Footer from './common/footer'
 
 const bamboraPurple = '#552387'
 const muiTheme = getMuiTheme({
@@ -22,9 +25,15 @@ const muiTheme = getMuiTheme({
     },
     ripple: {
       color: fade(grey50, 0.87),
-    },
-        
+    }
 })
+
+const contentAndFooterStyle={
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-between',
+    minHeight:'100vh'
+}
 
 class App extends Component {
     constructor(props) {
@@ -48,18 +57,21 @@ class App extends Component {
         })
    }
 
-
     render() {
         const {navDrawerOpen}= this.state
         return (
         <MuiThemeProvider muiTheme={muiTheme}>
-            <div>
-                <AppBar onMenuClicked = {this.onMenuClicked}/>
-                <AppNavDrawer open={navDrawerOpen} onNavDrawerClosing={this.onNavDrawerClosing}/>
-                <div className='container'>
-                {this.props.children}
+            <div name='conentAndFooter' style={contentAndFooterStyle} >
+                <div name='content'>
+                    <AppBar onMenuClicked = {this.onMenuClicked}/>
+                    <AppNavDrawer open={navDrawerOpen} onNavDrawerClosing={this.onNavDrawerClosing}/>
+                    <div className='container'>
+                        {this.props.children}
+                    </div>
                 </div>
+                <Footer />
             </div>
+          
         </MuiThemeProvider>    )
     }
 }

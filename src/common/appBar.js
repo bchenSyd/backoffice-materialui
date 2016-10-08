@@ -33,7 +33,7 @@ const appBar = props => {
             iconStyleRight={{flex:'6'}}
             iconElementRight={
                 <div id='navi_menu_wraper' style={{display:'flex'}}>
-                    <Menu style={style.menuStyle} listStyle={ style.menuListStyle} onChange={onNavChange}>
+                    <Menu style={style.menuStyle} listStyle={style.menuListStyle} onChange={onNavChange}>
                         <MenuItem style={{color:'white'}}  primaryText='Settlements' value='/settlements' />
                         <MenuItem style={{color:'white'}}  primaryText='Transactions' value='/transactions' />
                     </Menu>
