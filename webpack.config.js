@@ -47,7 +47,7 @@ var config = {
     loaders: [
       {
         test: /\.jsx?/,
-        loaders: [ 'react-hot','babel'],
+        loaders: [ 'react-hot','babel','eslint'],
         exclude: /node_modules/,
       },
       {
@@ -83,8 +83,7 @@ var config = {
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
-        loader: 'file?name=[name].[ext]',
-        include:/img/
+        loader: 'file?name=[name].[ext]'
       }
       
     ]
