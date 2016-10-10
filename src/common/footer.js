@@ -15,7 +15,7 @@ const footer = props => {
     }
     return (
         <div name='footer'  style={footerStyle}>
-            <p>copyright@bo.chen</p>
+            <p>copyright@bambora.com</p>
         </div>
        
     )
