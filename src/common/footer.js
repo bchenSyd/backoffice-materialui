@@ -1,17 +1,13 @@
 import React, {Component, PropTypes} from 'react'
 
-import ClearFix from 'material-ui/internal/ClearFix'
-import spacing from 'material-ui/styles/spacing'
-import {lightWhite, grey900} from 'material-ui/styles/colors'
-import withWidth, {SMALL, LARGE} from 'material-ui/utils/withWidth'
-
-const footer = props => {
+const footer = (props, context) => {
+    const {footer:{color, backgroundColor}} = context.muiTheme
     const footerStyle = {
-        backgroundColor: grey900,
+        backgroundColor,
         textAlign: 'center',
         paddingTop: '5px',
         boxSizing: 'border-box',
-        color:lightWhite
+        color
     }
     return (
         <div name='footer'  style={footerStyle}>
@@ -21,8 +17,8 @@ const footer = props => {
     )
 }
 
-footer.propTypes = {
-    
+footer.contextTypes = {
+    muiTheme : PropTypes.object.isRequired
 }
 
 export default footer

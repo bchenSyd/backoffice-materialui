@@ -41,6 +41,7 @@ var config = {
     new CopyWebpackPlugin([
       {from: 'index.html'},
       {from:'web.config'},
+      {from:'favicon.ico'},
       {from:'assets/css/font-icons', to:'font-icons'}
     ]),
   ],
