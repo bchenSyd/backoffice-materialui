@@ -1,12 +1,11 @@
 import React from 'react'
-import {render} from 'react-dom'
+import { render } from 'react-dom'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
-import { Router, browserHistory} from 'react-router'
-import routes from './routes'
-
-import {Provider} from 'react-redux'
 import configureStore from './store/configureStore'
+import { AppContainer } from 'react-hot-loader'
+import RootComponent from './rootComponent'
+
 
 import 'bootstrap/dist/js/bootstrap.min'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -16,14 +15,21 @@ import './style/_index.scss'
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin()
-
-
-
 const root = document.getElementById('root')
-
 const store = configureStore()
-render(<Provider store={store}>
-        <Router history={browserHistory} >
-            {routes}
-        </Router>
-    </Provider>, root)
+
+render(<AppContainer>
+    <RootComponent store={store} />
+</AppContainer>, root)
+
+if (module.hot) {
+    module.hot.accept('./rootComponent', () => {
+        // If you use Webpack 2 in ES modules mode, you can
+        // use <App /> here rather than require() a <NextApp />.
+        const NextApp = require('./rootComponent').default
+        render(<AppContainer>
+            <NextApp store={store}/>
+        </AppContainer>, root)
+    })
+}
+

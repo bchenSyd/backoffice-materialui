@@ -78,7 +78,7 @@ class App extends Component {
                 <Footer />
             </div>
           
-        </MuiThemeProvider>    )
+        </MuiThemeProvider>)
     }
 }
 

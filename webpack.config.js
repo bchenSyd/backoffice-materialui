@@ -21,7 +21,7 @@ var config = {
     new webpack.ProvidePlugin({
       //'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
       'jQuery': 'jquery',
-      _:'lodash'
+      _: 'lodash'
     }),
     // Enables Hot Modules Replacement
     new webpack.HotModuleReplacementPlugin(),
@@ -32,24 +32,24 @@ var config = {
     // replace all modules' if(process.env.NODE_ENV === 'production')
     // with if (undefined|'production' === 'production')
     // because the code is running on browser, not node.js
-     new webpack.DefinePlugin({
+    new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(env)
       }
     }),
     // Moves files
     new CopyWebpackPlugin([
-      {from: 'index.html'},
-      {from:'web.config'},
-      {from:'favicon.ico'},
-      {from:'assets/css/font-icons', to:'font-icons'}
+      { from: 'index.html' },
+      { from: 'web.config' },
+      { from: 'favicon.ico' },
+      { from: 'assets/css/font-icons', to: 'font-icons' }
     ]),
   ],
   module: {
     loaders: [
       {
         test: /\.jsx?/,
-        loaders: [ 'react-hot','babel','eslint'],
+        loaders: ['babel', 'eslint'],
         exclude: /node_modules/,
       },
       {
@@ -73,7 +73,7 @@ var config = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style','css!postcss!sass')
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
       },
       {
         test: /\.less$/,
@@ -87,10 +87,10 @@ var config = {
         test: /\.jpe?g$|\.gif$|\.png$/i,
         loader: 'file?name=[name].[ext]'
       }
-      
+
     ]
   },
-   postcss: (webpack) => {
+  postcss: (webpack) => {
     return [
       autoprefixer({
         browsers: ['last 2 versions']
@@ -99,12 +99,12 @@ var config = {
       postcssImport({
         addDependencyTo: webpack
       })
-    ] 
+    ]
   },
 };
 
 
-if(env=== 'production'){
+if (env === 'production') {
   config.entry = './src/index'
   config.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
@@ -119,15 +119,15 @@ if(env=== 'production'){
   config.plugins.push(new webpack.optimize.DedupePlugin())
   config.plugins.push(new webpack.NoErrorsPlugin())
 
-}else{
-  config = Object.assign(config,{
-        devtool: 'source-map',
-        debug:true, 
-        entry: [
-          'webpack-dev-server/client?http://localhost:8000',
-          'webpack/hot/only-dev-server',
-          './src/index'
-        ]
+} else {
+  config = Object.assign(config, {
+    devtool: 'source-map',
+    debug: true,
+    entry: [
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client',
+      './src/index'
+    ]
   })
 }
 module.exports = config
